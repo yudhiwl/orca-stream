@@ -32,6 +32,15 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+data/private/*
+!data/private/
+!data/private/.gitkeep
+!data/private/stream-secrets.json
+!data/private/player-settings.json
+data/private/preroll-impressions.json
+*.tmp
+tmp_admin_cookie.txt
+source.txt
 
 # vercel
 .vercel
@@ -39,3 +48,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+tmp_sync_output/*
+backup.txt
+code.txt
+decoded_code.txt
+orcastream.rar
+source.txt
+android-native-app/*
