@@ -1,7 +1,7 @@
 {
-  "playbackEnabled": false,
-  "playbackEnabledWeb": false,
-  "playbackEnabledMobile": false,
+  "playbackEnabled": true,
+  "playbackEnabledWeb": true,
+  "playbackEnabledMobile": true,
   "prerollEnabled": false,
   "prerollMode": "test",
   "prerollDurationSeconds": 15,
@@ -28,5 +28,5 @@
   "topPlayerMobileFallbackScript": "<script>\n  atOptions = {\n    'key' : '357262ab14ab0fd53674005468a284f2',\n    'format' : 'iframe',\n    'height' : 250,\n    'width' : 300,\n    'params' : {}\n  };\n</script>\n<script src=\"https://www.highperformanceformat.com/357262ab14ab0fd53674005468a284f2/invoke.js\"></script>\n",
   "topPlayerMobileFallbackClickUrl": "",
   "topPlayerMobileFallbackAltText": "Sponsored",
-  "updatedAt": "2026-02-28T06:23:42.933Z"
+  "updatedAt": "2026-02-28T08:30:29.458Z"
 }
