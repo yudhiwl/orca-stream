@@ -1,0 +1,164 @@
+{
+  "version": 1,
+  "generatedAt": "2026-02-28T12:43:11.557Z",
+  "algorithm": "aes-256-gcm",
+  "kdf": {
+    "name": "pbkdf2-sha256",
+    "iterations": 210000
+  },
+  "keyEnv": "ORCA_ANDROID_SOURCE_KEY",
+  "sourceDir": "data-v1\\source",
+  "outputDir": "data-v1\\source-encrypted",
+  "files": [
+    {
+      "sourceFile": "data-v1\\source\\AU.json",
+      "encryptedFile": "data-v1\\source-encrypted\\AU.enc",
+      "outputBytes": 780616,
+      "saltB64": "VUV5UIxJFamtg++sbzy3QQ==",
+      "ivB64": "a8snsiz+t1NmNeoS",
+      "tagLength": 16,
+      "inputSha256": "ae9d78461bec147092d6c8e34069f0bfa17719be02f49f17ea30467d78cb9c45",
+      "payloadSha256": "29e8513ec57ad23004dba3278c9e8908206456d8313407a768071fa860a01f45"
+    },
+    {
+      "sourceFile": "data-v1\\source\\BR.json",
+      "encryptedFile": "data-v1\\source-encrypted\\BR.enc",
+      "outputBytes": 1562821,
+      "saltB64": "ycRKddLocNjeIXck/hdRLQ==",
+      "ivB64": "jrwqT2oz0kxAMfAu",
+      "tagLength": 16,
+      "inputSha256": "fb17b87188e1bf27cacfa962fd589647b045524212590b52b2dd6037bbbdca62",
+      "payloadSha256": "c2ad267d99cfe1a1c938424a7cd803aa582a264943ae76b7ca5ad60ca81b21d0"
+    },
+    {
+      "sourceFile": "data-v1\\source\\EV.json",
+      "encryptedFile": "data-v1\\source-encrypted\\EV.enc",
+      "outputBytes": 466237,
+      "saltB64": "n4Smy2k+oULPQOIXX5m5SA==",
+      "ivB64": "+5ib0605ywA5RYIY",
+      "tagLength": 16,
+      "inputSha256": "d95fcb6c3cbd415ce63023b8840a4b9aa8386c3cefa68c822264407d80cbb5d7",
+      "payloadSha256": "f0e8acc8b1773a601a3e7c03ebdc6a7891fc0cd21253a2b49cdeaf82f7189dc1"
+    },
+    {
+      "sourceFile": "data-v1\\source\\GB.json",
+      "encryptedFile": "data-v1\\source-encrypted\\GB.enc",
+      "outputBytes": 648751,
+      "saltB64": "xays3TNfD61/xFZzYwuc3Q==",
+      "ivB64": "OGBd4n1XjPHJ1kQF",
+      "tagLength": 16,
+      "inputSha256": "3fce29e48b189e7024d0aff883c1ff6d550512ba8d12b1497b75b4cf8cc95ec3",
+      "payloadSha256": "92ded221726296c07c6712dd0c837df5166af40ae511a38cfd7e9336507d2935"
+    },
+    {
+      "sourceFile": "data-v1\\source\\ID.json",
+      "encryptedFile": "data-v1\\source-encrypted\\ID.enc",
+      "outputBytes": 1201242,
+      "saltB64": "zMIPnX+9uvM7n1rIYijwcg==",
+      "ivB64": "uL84g7/zarQWzXD3",
+      "tagLength": 16,
+      "inputSha256": "19d6a047c85083db78f5c9fea8b4670f4a5aa3566e561fe3da9241c93d95e211",
+      "payloadSha256": "cd3102272da049bcb66c5910ceffaa997af94576745a358ed07a7ad9d86fd8e5"
+    },
+    {
+      "sourceFile": "data-v1\\source\\JP.json",
+      "encryptedFile": "data-v1\\source-encrypted\\JP.enc",
+      "outputBytes": 626001,
+      "saltB64": "A46dSl14jMTqRj9ltcmfjQ==",
+      "ivB64": "xTc1t5wswH2r1z9v",
+      "tagLength": 16,
+      "inputSha256": "e37759e43b074e76542e4581f3c8a39b735d173a2304ff01fe95294742e17a37",
+      "payloadSha256": "213a28bc133bfc4a4cf7e6afad4f47cc0b568c6c5aed85450c603fcfda6dfc08"
+    },
+    {
+      "sourceFile": "data-v1\\source\\KD.json",
+      "encryptedFile": "data-v1\\source-encrypted\\KD.enc",
+      "outputBytes": 811639,
+      "saltB64": "JuH2Sb/4HKVE6DexMuG0Ww==",
+      "ivB64": "GJdIFSuw+epGYHKI",
+      "tagLength": 16,
+      "inputSha256": "00fff39d302dd91ad2f49b4c95b533ade84d0489a15a16d3d93f139fd3384dc4",
+      "payloadSha256": "7687a44b5b2a6399dd5d40d0436df24d8c21f9b56f94b68a6957cf74474cdc7b"
+    },
+    {
+      "sourceFile": "data-v1\\source\\KR.json",
+      "encryptedFile": "data-v1\\source-encrypted\\KR.enc",
+      "outputBytes": 535722,
+      "saltB64": "tyvvIUm+Th91usk6W6c18A==",
+      "ivB64": "ClI4jqtNB/A7N2RS",
+      "tagLength": 16,
+      "inputSha256": "2f9822d484649d54256f3d31485d4de0c5828fb6feb390a11b13af981bd08510",
+      "payloadSha256": "8b0f94426df658e608f9d54c8730dbcec99bc6fae6c22ba2dafbaad538921900"
+    },
+    {
+      "sourceFile": "data-v1\\source\\LO.json",
+      "encryptedFile": "data-v1\\source-encrypted\\LO.enc",
+      "outputBytes": 921274,
+      "saltB64": "lyMEppegEzqvD7b5B0TXlA==",
+      "ivB64": "/K6VsRcRMiBuz/n3",
+      "tagLength": 16,
+      "inputSha256": "957d2665d5434f5973d3ad2d0a7e928bc54752d8c59493d7b74489ff59ad5226",
+      "payloadSha256": "f7f13400a2a36c5571226d95f4f1ba67ac83f0d5eeb1571068a6054cfce9fb7f"
+    },
+    {
+      "sourceFile": "data-v1\\source\\MI.json",
+      "encryptedFile": "data-v1\\source-encrypted\\MI.enc",
+      "outputBytes": 176958,
+      "saltB64": "3CdgSgYQgtApkgaIdD2tLQ==",
+      "ivB64": "9cFKLNrkIWLb66NN",
+      "tagLength": 16,
+      "inputSha256": "fab3ba183bea864a3c46d621da297a20c019540f8438f297967172c42e58ebfe",
+      "payloadSha256": "32bd3b888f79b4b5440d0edba107a16da4d54323fc089c829d3a6fb38fc2f1ac"
+    },
+    {
+      "sourceFile": "data-v1\\source\\MY.json",
+      "encryptedFile": "data-v1\\source-encrypted\\MY.enc",
+      "outputBytes": 690420,
+      "saltB64": "wqQud6Iz+3gS4MfvrpyxiA==",
+      "ivB64": "0KVJhTRXImotpANf",
+      "tagLength": 16,
+      "inputSha256": "b5ee54db5b7911ce225b8fdeda3a667a94f2809c6607f541e8a80bce12741760",
+      "payloadSha256": "e8a3493c7e8a91543308889b19f2ddbf6803fe6ddaf94400c7ea2d8fd3f964e9"
+    },
+    {
+      "sourceFile": "data-v1\\source\\RI.json",
+      "encryptedFile": "data-v1\\source-encrypted\\RI.enc",
+      "outputBytes": 552622,
+      "saltB64": "+DgnviE7azUbNuMn93ixQA==",
+      "ivB64": "KFablqkhY8/GihUE",
+      "tagLength": 16,
+      "inputSha256": "43d2b18e524ff6225f870dfe6e20da4364825f129a5ff12c5d7e0b820efea3aa",
+      "payloadSha256": "5881a97eea5177ff3aee078d570b29be01779f01e90aeeeb91c122d4f274cd2b"
+    },
+    {
+      "sourceFile": "data-v1\\source\\SA.json",
+      "encryptedFile": "data-v1\\source-encrypted\\SA.enc",
+      "outputBytes": 700267,
+      "saltB64": "J9zkg8VAb8K05NT9+E7iJw==",
+      "ivB64": "cSfM64CQdouyKyx4",
+      "tagLength": 16,
+      "inputSha256": "058a2d1e86f15ccea6b0403782eebd73f1e07afd9e28832c159065064d594439",
+      "payloadSha256": "b776deb9e701896c64f95db7e0d81b00d23a80c92e7d31d6b8af7f48b774adc3"
+    },
+    {
+      "sourceFile": "data-v1\\source\\SG.json",
+      "encryptedFile": "data-v1\\source-encrypted\\SG.enc",
+      "outputBytes": 607400,
+      "saltB64": "SatExAarUxhVcWvTMJxCXw==",
+      "ivB64": "XliU1fhSHv2qlh8N",
+      "tagLength": 16,
+      "inputSha256": "771ace672ec0e39734dda6c59753770ff5b4fcd8d44927e5d5f166063c8f6e77",
+      "payloadSha256": "6291c100264228d5bd0ffbff794b45a540cd6f3b03fbd726e641cdde877d8961"
+    },
+    {
+      "sourceFile": "data-v1\\source\\SP.json",
+      "encryptedFile": "data-v1\\source-encrypted\\SP.enc",
+      "outputBytes": 1215301,
+      "saltB64": "SV9V4x3ks2nS1Sw6wL25fw==",
+      "ivB64": "haVUcfrG8uMCFA4Q",
+      "tagLength": 16,
+      "inputSha256": "98776da6bad2cfd6d07442f6ed7c267046779528a40b3816eb96406c77cdd658",
+      "payloadSha256": "b44bb0a0661b87f7c091168023d5cb86904401629c6a0ae07802a0904b3c4df4"
+    }
+  ]
+}
