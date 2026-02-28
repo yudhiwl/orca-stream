@@ -1,0 +1,74 @@
+# Dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# Build outputs
+/.next/
+/out/
+/build
+/coverage
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Environment
+.env*
+
+# OS / tooling
+.DS_Store
+*.pem
+*.tmp
+*.tsbuildinfo
+next-env.d.ts
+
+# Local-only files
+tmp_admin_cookie.txt
+backup.txt
+code.txt
+decoded_code.txt
+source.txt
+orcastream.rar
+2orcastream.zip
+
+# Vercel
+.vercel
+
+# Private runtime storage (keep folder marker only)
+data/*
+/data/private/*
+!/data/private/.gitkeep
+/data/private/preroll-impressions.json
+
+# Temporary sync output
+/src/data/tmp_sync_output/*.json
+
+# Android native app local workspace
+/android-native-app/*
+
+# data-v1
+# semua file data-v1 di-track (tidak di-ignore)
+.vscode
+eslint.config.mjs
+eslint.config.mjs
+left_part.bin
+next.config.ts
+package-lock.json
+package.json
+postcss.config.mjs
+proxy.ts
+README.md
+tsconfig.json
+tsconfig.tsbuildinfo
+scripts/*
+public/*
+src/*
+data-v1/source/*.json
