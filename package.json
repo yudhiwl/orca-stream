@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "seo:audit": "node scripts/seo-audit.mjs"
+    "seo:audit": "node scripts/seo-audit.mjs",
+    "secrets:import:upstash": "node scripts/import-stream-secrets-upstash.mjs"
   },
   "dependencies": {
     "lucide-react": "^0.575.0",

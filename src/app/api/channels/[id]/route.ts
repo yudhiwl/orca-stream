@@ -127,7 +127,7 @@ export async function PUT(request: NextRequest, context: RouteContext) {
         channels[index] = { ...channels[index], ...normalized };
         writeChannels(channels);
         if (Object.keys(secretPatch).length > 0) {
-            upsertStreamSecret('channels', id, secretPatch);
+            await upsertStreamSecret('channels', id, secretPatch);
         }
         revalidatePublicChannelPages();
         return NextResponse.json(sanitizeChannelForClient(channels[index]));
@@ -154,7 +154,7 @@ export async function DELETE(request: NextRequest, context: RouteContext) {
             return NextResponse.json({ error: 'Channel not found' }, { status: 404 });
         }
         writeChannels(filtered);
-        deleteStreamSecret('channels', id);
+        await deleteStreamSecret('channels', id);
         revalidatePublicChannelPages();
         return NextResponse.json({ success: true });
     } catch {

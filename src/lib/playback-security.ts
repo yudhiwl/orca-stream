@@ -90,8 +90,8 @@ function mapLiveEventToChannel(event: LiveEvent): Channel {
     };
 }
 
-function withChannelSecrets(scope: StreamSecretScope, sourceId: string, channel: Channel): Channel {
-    const secrets = getStreamSecret(scope, sourceId);
+async function withChannelSecrets(scope: StreamSecretScope, sourceId: string, channel: Channel): Promise<Channel> {
+    const secrets = await getStreamSecret(scope, sourceId);
     if (!secrets) return channel;
 
     return {
@@ -146,7 +146,7 @@ export function readLiveEventsData(): LiveEvent[] {
     return Array.isArray(parsed) ? (parsed as LiveEvent[]) : [];
 }
 
-export function resolveChannelForPlayback(channelId: string): Channel | null {
+export async function resolveChannelForPlayback(channelId: string): Promise<Channel | null> {
     const id = channelId.trim();
     if (!id) return null;
 

@@ -134,7 +134,7 @@ export async function PUT(request: NextRequest, context: RouteContext) {
         events[index] = { ...events[index], ...normalized };
         writeEvents(events);
         if (Object.keys(secretPatch).length > 0) {
-            upsertStreamSecret('liveEvents', id, secretPatch);
+            await upsertStreamSecret('liveEvents', id, secretPatch);
         }
         revalidateLiveEventPages();
         return NextResponse.json(sanitizeLiveEventForClient(events[index]));
@@ -161,7 +161,7 @@ export async function DELETE(request: NextRequest, context: RouteContext) {
             return NextResponse.json({ error: 'Event tidak ditemukan' }, { status: 404 });
         }
         writeEvents(filtered);
-        deleteStreamSecret('liveEvents', id);
+        await deleteStreamSecret('liveEvents', id);
         revalidateLiveEventPages();
         return NextResponse.json({ success: true });
     } catch {

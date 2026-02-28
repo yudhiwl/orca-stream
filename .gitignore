@@ -32,12 +32,12 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
-#data/private/*
-#!data/private/
-#!data/private/.gitkeep
-#!data/private/stream-secrets.json
-#!data/private/player-settings.json
-#data/private/preroll-impressions.json
+data/private/*
+!data/private/
+!data/private/.gitkeep
+!data/private/stream-secrets.json
+!data/private/player-settings.json
+data/private/preroll-impressions.json
 *.tmp
 tmp_admin_cookie.txt
 source.txt

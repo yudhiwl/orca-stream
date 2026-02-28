@@ -36,7 +36,7 @@ export async function GET(request: NextRequest) {
         return NextResponse.json({ error: 'Missing channel id' }, { status: 400 });
     }
 
-    const channel = resolveChannelForPlayback(id);
+    const channel = await resolveChannelForPlayback(id);
     if (!channel) {
         return NextResponse.json({ error: 'Channel not found' }, { status: 404 });
     }

@@ -82,8 +82,8 @@ function normalizeCreateInput(input: ChannelInput) {
     };
 }
 
-function mergeChannelSecret(channel: Channel): Channel {
-    const secret = getStreamSecret('channels', channel.id);
+async function mergeChannelSecret(channel: Channel): Promise<Channel> {
+    const secret = await getStreamSecret('channels', channel.id);
     if (!secret) return channel;
 
     return {
@@ -110,7 +110,8 @@ export async function GET(request: NextRequest) {
         if (includeSecrets) {
             const unauthorized = requireAdminSession(request);
             if (unauthorized) return unauthorized;
-            return NextResponse.json(channels.map(mergeChannelSecret), {
+            const hydrated = await Promise.all(channels.map((channel) => mergeChannelSecret(channel)));
+            return NextResponse.json(hydrated, {
                 headers: {
                     'Cache-Control': 'no-store',
                 },
@@ -157,7 +158,7 @@ export async function POST(request: NextRequest) {
         };
         channels.push(newChannel);
         writeChannels(channels);
-        upsertStreamSecret('channels', newChannel.id, {
+        await upsertStreamSecret('channels', newChannel.id, {
             hls: sourceHls,
             url_license: (parsed.data.url_license ?? '').trim(),
             header_iptv: parsed.data.header_iptv ?? '',

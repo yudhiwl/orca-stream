@@ -85,8 +85,8 @@ function normalizeEventInput(data: LiveEventInput) {
     };
 }
 
-function mergeLiveEventSecret<T extends { id: string; hls?: string; header_iptv?: string; header_license?: string; url_license?: string }>(event: T): T {
-    const secret = getStreamSecret('liveEvents', event.id);
+async function mergeLiveEventSecret<T extends { id: string; hls?: string; header_iptv?: string; header_license?: string; url_license?: string }>(event: T): Promise<T> {
+    const secret = await getStreamSecret('liveEvents', event.id);
     if (!secret) return event;
 
     return {
@@ -127,7 +127,8 @@ export async function GET(request: NextRequest) {
     const events = readEvents();
     const result = activeOnly ? events.filter((e: { is_live: string }) => e.is_live === 't') : events;
     if (includeSecrets) {
-        return NextResponse.json(result.map(mergeLiveEventSecret), {
+        const hydrated = await Promise.all(result.map((event: typeof result[number]) => mergeLiveEventSecret(event)));
+        return NextResponse.json(hydrated, {
             headers: {
                 'Cache-Control': 'no-store',
             },
@@ -184,7 +185,7 @@ export async function POST(request: NextRequest) {
         };
         events.push(newEvent);
         writeEvents(events);
-        upsertStreamSecret('liveEvents', newEvent.id, {
+        await upsertStreamSecret('liveEvents', newEvent.id, {
             hls: parsed.data.hls,
             header_iptv: parsed.data.header_iptv,
             header_license: parsed.data.header_license,
