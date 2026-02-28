@@ -1,6 +1,4 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
-# dependencies
+# Dependencies
 /node_modules
 /.pnp
 .pnp.*
@@ -10,48 +8,53 @@
 !.yarn/releases
 !.yarn/versions
 
-# testing
-/coverage
-
-# next.js
+# Build outputs
 /.next/
 /out/
-
-# production
 /build
+/coverage
 
-# misc
-.DS_Store
-*.pem
-
-# debug
+# Logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
+# Environment
 .env*
-data/private/*
-!data/private/
-!data/private/.gitkeep
-!data/private/stream-secrets.json
-!data/private/player-settings.json
-data/private/preroll-impressions.json
+
+# OS / tooling
+.DS_Store
+*.pem
 *.tmp
-tmp_admin_cookie.txt
-source.txt
-
-# vercel
-.vercel
-
-# typescript
 *.tsbuildinfo
 next-env.d.ts
-tmp_sync_output/*
+
+# Local-only files
+tmp_admin_cookie.txt
 backup.txt
 code.txt
 decoded_code.txt
-orcastream.rar
 source.txt
-android-native-app/*
+orcastream.rar
+2orcastream.zip
+
+# Vercel
+.vercel
+
+# Private runtime storage (keep folder marker only)
+/data/private/*
+!/data/private/.gitkeep
+/data/private/preroll-impressions.json
+
+# Temporary sync output
+/src/data/tmp_sync_output/*.json
+
+# Android native app local workspace
+/android-native-app/*
+
+# Android data-v1 generated bundles (keep /data-v1/source/*.json tracked)
+/data-v1/sources.json
+/data-v1/sources.template.json
+/data-v1/sources.decoded.json
+/data-v1/live-events.json

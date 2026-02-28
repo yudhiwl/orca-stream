@@ -11,8 +11,8 @@ const BRANCH = "main";
 const LITE_HEADER_MARKER = "jhmfgfdgdvcgcghf";
 const execFileAsync = promisify(execFile);
 const DEFAULT_SELECTED_FILE = "EV.json";
-const DEFAULT_OUTPUT_DIR = path.join("src", "data", "tmp_sync_output");
-const DEFAULT_LIVE_EVENTS_OUT = path.join("src", "data", "live-events.json");
+const DEFAULT_OUTPUT_DIR = path.join("data-v1", "source");
+const DEFAULT_LIVE_EVENTS_OUT = path.join("data-v1", "live-events.json");
 const LIVE_FALLBACK_WINDOW_SECONDS = 3 * 60 * 60;
 
 function parseArgs(argv) {
@@ -23,7 +23,7 @@ function parseArgs(argv) {
     preserveImages: true,
     files: [],
     onlyEv: true,
-    syncLiveEvents: true,
+    syncLiveEvents: false,
     liveEventsOut: DEFAULT_LIVE_EVENTS_OUT,
   };
 
@@ -75,6 +75,10 @@ function parseArgs(argv) {
     }
     if (arg === "--no-live-events-sync") {
       args.syncLiveEvents = false;
+      continue;
+    }
+    if (arg === "--live-events-sync") {
+      args.syncLiveEvents = true;
       continue;
     }
     if (arg === "--live-events-out" && argv[i + 1]) {
