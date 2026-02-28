@@ -53,8 +53,5 @@ orcastream.rar
 # Android native app local workspace
 /android-native-app/*
 
-# Android data-v1 generated bundles (keep /data-v1/source/*.json tracked)
-/data-v1/sources.json
-/data-v1/sources.template.json
-/data-v1/sources.decoded.json
-/data-v1/live-events.json
+# data-v1
+# semua file data-v1 di-track (tidak di-ignore)

@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "algorithm": "aes-256-gcm",
+  "kdf": {
+    "name": "pbkdf2-sha256",
+    "iterations": 210000,
+    "saltB64": "uAbiloCg7AwbafZL1mxGwQ=="
+  },
+  "ivB64": "Yb0z6NvncECNllnR",
+  "tagLength": 16,
+  "payloadSha256": "f4a036dd32953c74af74ee8c3df44452e705e4b6c920ba72001367c906d5823d",
+  "inputSha256": "b954558ad0f427f006caa5f42b16ba38dedb1af2eb2477c873cceeec8747ffcd",
+  "generatedAt": "2026-02-28T11:56:54.629Z",
+  "inputFile": "data-v1\\sources.json",
+  "outputFile": "data-v1\\sources.enc",
+  "outputBytes": 11499392
+}
