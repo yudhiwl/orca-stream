@@ -7,3 +7,7 @@
 # Allow data-v1 and all its contents.
 !data-v1/
 !data-v1/**
+
+# But keep raw source local-only.
+data-v1/source/
+data-v1/source/**
