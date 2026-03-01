@@ -11,3 +11,4 @@
 # But keep raw source local-only.
 data-v1/source/
 data-v1/source/**
+README.md

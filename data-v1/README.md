@@ -73,3 +73,39 @@ Minimal isi yang harus ikut:
 
 - `data-v1/source-encrypted/*.enc`
 - `data-v1/source-encrypted/manifest.json`
+
+git -C e:\Laragon\www\orcastream commit -m "Remove data-v1/source from repository and ignore it"
+git -C e:\Laragon\www\orcastream push
+
+api.orcatv.my.id=sha256/fsf6m9c54wpl8ZUICYPV5wbHPuSoEPmmM0WsDwB0hgI=
+
+raw.githubusercontent.com=sha256/1FtgkXeU53bUTaObUogizKNIqs/ZGaEo1k2AwG30xts=
+
+# 1) Ambil pin untuk api.orcatv.my.id
+$targetHost='api.orcatv.my.id'
+$script = @'
+import javax.net.ssl.*;
+import java.security.*;
+import java.security.cert.*;
+import java.util.Base64;
+String host = "__HOST__";
+int port = 443;
+SSLSocketFactory factory = (SSLSocketFactory) SSLSocketFactory.getDefault();
+try (SSLSocket socket = (SSLSocket) factory.createSocket(host, port)) {
+    socket.startHandshake();
+    X509Certificate cert = (X509Certificate) socket.getSession().getPeerCertificates()[0];
+    byte[] spki = cert.getPublicKey().getEncoded();
+    byte[] digest = MessageDigest.getInstance("SHA-256").digest(spki);
+    String pin = "sha256/" + Base64.getEncoder().encodeToString(digest);
+    System.out.println(host + "=" + pin);
+}
+/exit
+'@
+$script.Replace('__HOST__', $targetHost) | jshell --execution local -q
+
+# 2) Ambil pin untuk raw.githubusercontent.com
+$targetHost='raw.githubusercontent.com'
+$script.Replace('__HOST__', $targetHost) | jshell --execution local -q
+
+ORCATV_API_BASE_URL=https://api.orcatv.my.id/
+ORCATV_RELEASE_CERT_PINS=api.orcatv.my.id=sha256/<PIN_API>;raw.githubusercontent.com=sha256/<PIN_RAW>
