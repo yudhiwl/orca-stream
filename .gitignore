@@ -4,6 +4,11 @@
 # Keep git ignore rules tracked.
 !.gitignore
 
+# Allow GitHub Actions workflow for encrypted EV auto-update.
+!.github/
+!.github/workflows/
+!.github/workflows/encrypt-ev-source.yml
+
 # Allow data-v1 and all its contents.
 !data-v1/
 !data-v1/**

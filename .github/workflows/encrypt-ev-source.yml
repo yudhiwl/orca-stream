@@ -1,0 +1,153 @@
+name: Encrypt EV Source
+
+on:
+  schedule:
+    - cron: "0 */6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: encrypt-ev-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  encrypt-ev:
+    runs-on: ubuntu-latest
+    env:
+      DEFAULT_SOURCE_EV_URL: https://raw.githubusercontent.com/brodatv1/lite/main/v215/EV.json
+    steps:
+      - name: Checkout source repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Resolve source URL
+        id: source_url
+        run: |
+          SOURCE_URL="${{ vars.SOURCE_EV_URL }}"
+          if [ -z "${SOURCE_URL}" ]; then
+            SOURCE_URL="${DEFAULT_SOURCE_EV_URL}"
+          fi
+          echo "value=${SOURCE_URL}" >> "${GITHUB_OUTPUT}"
+          echo "Using SOURCE_EV_URL=${SOURCE_URL}"
+
+      - name: Download upstream EV.json
+        run: |
+          mkdir -p data-v1/source
+          curl -fL --retry 3 --retry-delay 2 \
+            "${{ steps.source_url.outputs.value }}" \
+            -o data-v1/source/EV.json
+
+      - name: Check whether EV payload changed
+        id: detect
+        run: |
+          node <<'NODE'
+          const fs = require("fs");
+          const crypto = require("crypto");
+
+          const manifestPath = "data-v1/source-encrypted/manifest.json";
+          const upstreamPath = "data-v1/source/EV.json";
+          const outputPath = process.env.GITHUB_OUTPUT;
+
+          const normalizeJson = (raw) => JSON.stringify(JSON.parse(raw.toString("utf8").replace(/^\uFEFF/, "").trim()));
+          const sha256 = (value) => crypto.createHash("sha256").update(value).digest("hex");
+
+          const upstreamNormalized = normalizeJson(fs.readFileSync(upstreamPath));
+          const upstreamSha = sha256(Buffer.from(upstreamNormalized, "utf8"));
+
+          let previousSha = "";
+          if (fs.existsSync(manifestPath)) {
+            try {
+              const manifest = JSON.parse(fs.readFileSync(manifestPath, "utf8"));
+              const entry = (manifest.files || []).find((item) =>
+                String(item?.sourceFile || "").replace(/\\/g, "/").endsWith("/EV.json")
+              );
+              previousSha = String(entry?.inputSha256 || "").toLowerCase();
+            } catch (error) {
+              previousSha = "";
+            }
+          }
+
+          const changed = !previousSha || previousSha !== upstreamSha;
+          fs.appendFileSync(outputPath, `changed=${changed ? "true" : "false"}\n`);
+          fs.appendFileSync(outputPath, `upstream_sha=${upstreamSha}\n`);
+          fs.appendFileSync(outputPath, `previous_sha=${previousSha}\n`);
+
+          console.log(`Upstream SHA: ${upstreamSha}`);
+          console.log(`Previous SHA: ${previousSha || "(none)"}`);
+          console.log(`Changed: ${changed}`);
+          NODE
+
+      - name: Encrypt EV.json
+        if: ${{ steps.detect.outputs.changed == 'true' }}
+        env:
+          ORCA_ANDROID_SOURCE_KEY: ${{ secrets.ORCA_ANDROID_SOURCE_KEY }}
+        run: |
+          if [ -z "${ORCA_ANDROID_SOURCE_KEY}" ]; then
+            echo "Secret ORCA_ANDROID_SOURCE_KEY belum diisi."
+            exit 1
+          fi
+          node scripts/encrypt-data-v1-source-folder.mjs --file EV.json
+
+      - name: Commit encrypted EV to same repository
+        if: ${{ steps.detect.outputs.changed == 'true' && vars.ENCRYPT_TARGET_REPO == '' }}
+        run: |
+          if git diff --quiet -- data-v1/source-encrypted/EV.enc data-v1/source-encrypted/manifest.json; then
+            echo "Tidak ada perubahan encrypted EV."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data-v1/source-encrypted/EV.enc data-v1/source-encrypted/manifest.json
+          git commit -m "chore(data-v1): auto-encrypt EV source"
+          git push
+
+      - name: Commit encrypted EV to target repository
+        if: ${{ steps.detect.outputs.changed == 'true' && vars.ENCRYPT_TARGET_REPO != '' }}
+        env:
+          TARGET_REPO: ${{ vars.ENCRYPT_TARGET_REPO }}
+          TARGET_BRANCH: ${{ vars.ENCRYPT_TARGET_BRANCH }}
+          ENCRYPT_TARGET_TOKEN: ${{ secrets.ENCRYPT_TARGET_TOKEN }}
+        run: |
+          if [ -z "${TARGET_REPO}" ]; then
+            echo "Variable ENCRYPT_TARGET_REPO kosong."
+            exit 1
+          fi
+          if [ -z "${ENCRYPT_TARGET_TOKEN}" ]; then
+            echo "Secret ENCRYPT_TARGET_TOKEN belum diisi."
+            exit 1
+          fi
+
+          BRANCH="${TARGET_BRANCH}"
+          if [ -z "${BRANCH}" ]; then
+            BRANCH="main"
+          fi
+
+          git clone --depth 1 --branch "${BRANCH}" "https://x-access-token:${ENCRYPT_TARGET_TOKEN}@github.com/${TARGET_REPO}.git" target-repo
+          mkdir -p target-repo/data-v1/source-encrypted
+          cp data-v1/source-encrypted/EV.enc target-repo/data-v1/source-encrypted/EV.enc
+          cp data-v1/source-encrypted/manifest.json target-repo/data-v1/source-encrypted/manifest.json
+
+          cd target-repo
+          if git diff --quiet -- data-v1/source-encrypted/EV.enc data-v1/source-encrypted/manifest.json; then
+            echo "Tidak ada perubahan encrypted EV di repo target."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data-v1/source-encrypted/EV.enc data-v1/source-encrypted/manifest.json
+          git commit -m "chore(data-v1): sync encrypted EV source"
+          git push origin "${BRANCH}"
+
+      - name: No change summary
+        if: ${{ steps.detect.outputs.changed != 'true' }}
+        run: |
+          echo "EV.json upstream tidak berubah. Encrypt/commit dilewati."
