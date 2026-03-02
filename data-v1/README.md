@@ -21,13 +21,38 @@ node scripts/sync-lite-data.mjs --all
 2. (Opsional) Konversi `image` base64 -> file gambar:
 
 ```bash
-node data-v1/tools/extract-images.mjs --image-base-url https://raw.githubusercontent.com/<owner>/<repo>/main/data-v1/source-images
+node data-v1/tools/extract-images.mjs
 ```
 
 Khusus 1 file:
 
 ```bash
-node data-v1/tools/extract-images.mjs --file EV.json --image-base-url https://raw.githubusercontent.com/<owner>/<repo>/main/data-v1/source-images
+node data-v1/tools/extract-images.mjs --file EV.json
+
+```
+
+Default script akan otomatis coba ambil:
+
+- `owner/repo` dari `git remote origin`
+- `branch` dari branch aktif
+
+Lalu membentuk URL:
+
+`https://raw.githubusercontent.com/<owner>/<repo>/<branch>/data-v1/source-images/...`
+
+Jika ingin paksa branch tertentu:
+
+```bash
+node data-v1/tools/extract-images.mjs --branch main
+```
+
+Jika ingin isi URL manual:
+
+```bash
+node data-v1/tools/extract-images.mjs --image-base-url https://raw.githubusercontent.com/<owner>/<repo>/main/data-v1/source-images
+
+node data-v1/tools/extract-images.mjs --image-base-url https://raw.githubusercontent.com/yudhiwl/orca-stream/main/data-v1/source-images
+
 ```
 
 3. Encrypt source lokal ke `source-encrypted`:
