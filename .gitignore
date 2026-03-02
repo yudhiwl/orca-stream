@@ -12,3 +12,4 @@
 data-v1/source/
 data-v1/source/**
 README.md
+data-v1/tools/extract-images.mjs
