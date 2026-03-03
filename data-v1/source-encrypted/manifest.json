@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-03-03T06:58:48.137Z",
+  "generatedAt": "2026-03-03T07:06:52.742Z",
   "algorithm": "aes-256-gcm",
   "kdf": {
     "name": "pbkdf2-sha256",
@@ -19,6 +19,16 @@
       "tagLength": 16,
       "inputSha256": "8dddd157080695401f010364c241ca0748afdc5ee09fae3bd79e76b04032401a",
       "payloadSha256": "01ad787d843e8a4b8822a45901bdcae1bff5673f2402dff5d3b08669aa7299e7"
+    },
+    {
+      "sourceFile": "data-v1/source/MI.json",
+      "encryptedFile": "data-v1/source-encrypted/MI.enc",
+      "outputBytes": 176958,
+      "saltB64": "k2bAErYvi5UJ6kuMhnRpDA==",
+      "ivB64": "xrxZnD52tsms9JG6",
+      "tagLength": 16,
+      "inputSha256": "fab3ba183bea864a3c46d621da297a20c019540f8438f297967172c42e58ebfe",
+      "payloadSha256": "7f88e2b4d719963bf586dd324d5c4831055f92002d4451678d48dca6dc709d1e"
     }
   ]
 }
