@@ -1,14 +1,14 @@
 {
   "version": 1,
-  "generatedAt": "2026-03-03T07:11:27.918Z",
+  "generatedAt": "2026-03-03T07:22:46.261Z",
   "algorithm": "aes-256-gcm",
   "kdf": {
     "name": "pbkdf2-sha256",
     "iterations": 210000
   },
   "keyEnv": "ORCA_ANDROID_SOURCE_KEY",
-  "sourceDir": "data-v1/source",
-  "outputDir": "data-v1/source-encrypted",
+  "sourceDir": "data-v1\\source",
+  "outputDir": "data-v1\\source-encrypted",
   "files": [
     {
       "sourceFile": "data-v1/source/AU.json",
@@ -159,6 +159,16 @@
       "tagLength": 16,
       "inputSha256": "0743df36293d25a6195cb6b7e631043afe68191398f8c8bb7e56bc9f0301d81d",
       "payloadSha256": "892dc0a85fe7af50a3cc7beaa1abd040a5b7d20862100f5c8b0100899834abd5"
+    },
+    {
+      "sourceFile": "data-v1\\source\\EV.json",
+      "encryptedFile": "data-v1\\source-encrypted\\EV.enc",
+      "outputBytes": 160350,
+      "saltB64": "jLxfSaq6VaU8uVpv5rt+Qg==",
+      "ivB64": "z/rDOOcaW4iNG27u",
+      "tagLength": 16,
+      "inputSha256": "e6d2f3dd4a15554996694701ec04355524109ed87ddaf798300a1c8f687c7dfe",
+      "payloadSha256": "43abeb01443e318255ca6f60efc0b70af673f906092d0c42225c3e70e5e4a7b5"
     }
   ]
 }

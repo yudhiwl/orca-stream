@@ -16,7 +16,7 @@ jobs:
   encrypt-ev:
     runs-on: ubuntu-latest
     env:
-      DEFAULT_SOURCE_EV_URL: https://raw.githubusercontent.com/brodatv1/lite/main/v215/EV.json
+      DEFAULT_LITE_VERSION: v215
     steps:
       - name: Checkout source repository
         uses: actions/checkout@v4
@@ -28,62 +28,43 @@ jobs:
         with:
           node-version: "20"
 
-      - name: Resolve source URL
-        id: source_url
+      - name: Resolve lite version
+        id: lite_version
         run: |
-          SOURCE_URL="${{ vars.SOURCE_EV_URL }}"
-          if [ -z "${SOURCE_URL}" ]; then
-            SOURCE_URL="${DEFAULT_SOURCE_EV_URL}"
+          LITE_VERSION="${{ vars.LITE_VERSION }}"
+          if [ -z "${LITE_VERSION}" ]; then
+            LITE_VERSION="${DEFAULT_LITE_VERSION}"
           fi
-          echo "value=${SOURCE_URL}" >> "${GITHUB_OUTPUT}"
-          echo "Using SOURCE_EV_URL=${SOURCE_URL}"
+          echo "value=${LITE_VERSION}" >> "${GITHUB_OUTPUT}"
+          echo "Using LITE_VERSION=${LITE_VERSION}"
 
-      - name: Download upstream EV.json
+      - name: Snapshot current EV hash
+        id: before
         run: |
-          mkdir -p data-v1/source
-          curl -fL --retry 3 --retry-delay 2 \
-            "${{ steps.source_url.outputs.value }}" \
-            -o data-v1/source/EV.json
+          if [ -f data-v1/source/EV.json ]; then
+            echo "hash=$(sha256sum data-v1/source/EV.json | awk '{print $1}')" >> "${GITHUB_OUTPUT}"
+          else
+            echo "hash=" >> "${GITHUB_OUTPUT}"
+          fi
 
-      - name: Check whether EV payload changed
+      - name: Sync + decrypt EV.json from brodatv1/lite
+        run: |
+          node scripts/sync-lite-data.mjs --version "${{ steps.lite_version.outputs.value }}" --file EV.json --no-prune --no-live-events-sync
+
+      - name: Check whether EV content changed
         id: detect
         run: |
-          node <<'NODE'
-          const fs = require("fs");
-          const crypto = require("crypto");
-
-          const manifestPath = "data-v1/source-encrypted/manifest.json";
-          const upstreamPath = "data-v1/source/EV.json";
-          const outputPath = process.env.GITHUB_OUTPUT;
-
-          const normalizeJson = (raw) => JSON.stringify(JSON.parse(raw.toString("utf8").replace(/^\uFEFF/, "").trim()));
-          const sha256 = (value) => crypto.createHash("sha256").update(value).digest("hex");
-
-          const upstreamNormalized = normalizeJson(fs.readFileSync(upstreamPath));
-          const upstreamSha = sha256(Buffer.from(upstreamNormalized, "utf8"));
-
-          let previousSha = "";
-          if (fs.existsSync(manifestPath)) {
-            try {
-              const manifest = JSON.parse(fs.readFileSync(manifestPath, "utf8"));
-              const entry = (manifest.files || []).find((item) =>
-                String(item?.sourceFile || "").replace(/\\/g, "/").endsWith("/EV.json")
-              );
-              previousSha = String(entry?.inputSha256 || "").toLowerCase();
-            } catch (error) {
-              previousSha = "";
-            }
-          }
-
-          const changed = !previousSha || previousSha !== upstreamSha;
-          fs.appendFileSync(outputPath, `changed=${changed ? "true" : "false"}\n`);
-          fs.appendFileSync(outputPath, `upstream_sha=${upstreamSha}\n`);
-          fs.appendFileSync(outputPath, `previous_sha=${previousSha}\n`);
-
-          console.log(`Upstream SHA: ${upstreamSha}`);
-          console.log(`Previous SHA: ${previousSha || "(none)"}`);
-          console.log(`Changed: ${changed}`);
-          NODE
+          BEFORE="${{ steps.before.outputs.hash }}"
+          AFTER="$(sha256sum data-v1/source/EV.json | awk '{print $1}')"
+          if [ -z "${BEFORE}" ] || [ "${BEFORE}" != "${AFTER}" ]; then
+            echo "changed=true" >> "${GITHUB_OUTPUT}"
+          else
+            echo "changed=false" >> "${GITHUB_OUTPUT}"
+          fi
+          echo "upstream_sha=${AFTER}" >> "${GITHUB_OUTPUT}"
+          echo "previous_sha=${BEFORE}" >> "${GITHUB_OUTPUT}"
+          echo "Before=${BEFORE:-"(none)"}"
+          echo "After=${AFTER}"
 
       - name: Encrypt EV.json
         if: ${{ steps.detect.outputs.changed == 'true' }}
