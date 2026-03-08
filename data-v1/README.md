@@ -16,7 +16,7 @@ Data source Android untuk mode encrypted via GitHub.
 
 ```bash
 node scripts/sync-lite-data.mjs --all
-node scripts/sync-lite-data.mjs EV.json
+node scripts/sync-lite-data.mjs --file EV.json
 ```
 
 2. (Opsional) Konversi `image` base64 -> file gambar:

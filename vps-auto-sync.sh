@@ -9,8 +9,6 @@ set -euo pipefail
 # 3. Commit and push any changes to GitHub
 # ==============================================================================
 
-# 1. Define Paths and Variables
-# Change this to the absolute path of your repository on the VPS
 WORKDIR="/var/www/orcastream" # <-- GANTI INI DENGAN PATH FOLDER ORCASTREAM DI VPS ANDA
 GIT_BRANCH="main"
 COMMIT_MSG="chore(data-v1): auto-sync and encrypt sources from VPS cron"
