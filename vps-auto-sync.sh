@@ -9,7 +9,7 @@ set -euo pipefail
 # 3. Commit and push any changes to GitHub
 # ==============================================================================
 
-WORKDIR="/var/www/orcastream" # <-- GANTI INI DENGAN PATH FOLDER ORCASTREAM DI VPS ANDA
+WORKDIR="/www/wwwroot/api.orcatv.my.id/orca-stream" # <-- GANTI INI DENGAN PATH FOLDER ORCASTREAM DI VPS ANDA
 GIT_BRANCH="main"
 COMMIT_MSG="chore(data-v1): auto-sync and encrypt sources from VPS cron"
 
