@@ -8,7 +8,7 @@ const DEFAULT_INPUT_DIR = path.join(ROOT_DIR, "source");
 const DEFAULT_IMAGE_DIR = path.join(ROOT_DIR, "source-images");
 const DATA_URI_RE = /^data:(image\/[a-zA-Z0-9+.-]+);base64,([A-Za-z0-9+/=\r\n]+)$/;
 const RAW_PLACEHOLDER_RE =
-  /^https:\/\/raw\.githubusercontent\.com\/<owner>\/<repo>\/[^/]+\/data-v1\/source-images\/(.+)$/i;
+  /^https:\/\/raw\.githubusercontent\.com\/([^/]+)\/([^/]+)\/[^/]+\/data-v1\/source-images\/(.+)$/i;
 
 function parseArgs() {
   const args = process.argv.slice(2);
@@ -66,6 +66,52 @@ function parseArgs() {
   return options;
 }
 
+function parseEnvFile(filePath) {
+  if (!fs.existsSync(filePath)) return {};
+
+  const raw = fs.readFileSync(filePath, "utf-8");
+  const entries = {};
+  for (const line of raw.split(/\r?\n/)) {
+    const trimmed = line.trim();
+    if (!trimmed || trimmed.startsWith("#")) continue;
+
+    const normalized = trimmed.startsWith("export ")
+      ? trimmed.slice("export ".length).trim()
+      : trimmed;
+    const sep = normalized.indexOf("=");
+    if (sep <= 0) continue;
+
+    const key = normalized.slice(0, sep).trim();
+    let value = normalized.slice(sep + 1).trim();
+    if (
+      (value.startsWith('"') && value.endsWith('"')) ||
+      (value.startsWith("'") && value.endsWith("'"))
+    ) {
+      value = value.slice(1, -1);
+    }
+    entries[key] = value;
+  }
+  return entries;
+}
+
+function loadLocalEnv() {
+  const shellEnvKeys = new Set(Object.keys(process.env));
+  const envPath = path.join(process.cwd(), ".env");
+  const envLocalPath = path.join(process.cwd(), ".env.local");
+
+  const fromEnv = parseEnvFile(envPath);
+  for (const [key, value] of Object.entries(fromEnv)) {
+    if (shellEnvKeys.has(key)) continue;
+    process.env[key] = value;
+  }
+
+  const fromEnvLocal = parseEnvFile(envLocalPath);
+  for (const [key, value] of Object.entries(fromEnvLocal)) {
+    if (shellEnvKeys.has(key)) continue;
+    process.env[key] = value;
+  }
+}
+
 function fail(message) {
   console.error(message);
   process.exit(1);
@@ -116,8 +162,11 @@ function parseDataUri(value) {
   return { mime, buffer };
 }
 
-function joinUrl(baseUrl, fileName) {
-  if (!baseUrl) return fileName;
+function joinUrl(baseUrl, fileName, imageDir) {
+  if (!baseUrl) {
+    const relativePath = path.relative(process.cwd(), imageDir);
+    return `${normalizePosixPath(relativePath)}/${fileName}`;
+  }
   return `${baseUrl.replace(/\/+$/, "")}/${fileName}`;
 }
 
@@ -199,6 +248,7 @@ function writeJson(filePath, value) {
 }
 
 function main() {
+  loadLocalEnv();
   const options = parseArgs();
   const resolvedImageBaseUrl = resolveImageBaseUrl(options);
   const availableFiles = getJsonFiles(options.inputDir);
@@ -271,7 +321,7 @@ function main() {
         converted += 1;
       }
 
-      const nextImage = joinUrl(resolvedImageBaseUrl, outputName);
+      const nextImage = joinUrl(resolvedImageBaseUrl, outputName, options.imageDir);
       if (item.image !== nextImage) {
         item.image = nextImage;
         updated += 1;
