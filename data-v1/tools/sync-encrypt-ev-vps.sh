@@ -8,6 +8,14 @@ GIT_BRANCH="${GIT_BRANCH:-main}"
 COMMIT_MSG="${COMMIT_MSG:-chore(data-v1): auto-encrypt EV source}"
 FORCE_ENCRYPT="${FORCE_ENCRYPT:-0}"
 
+# Load .env file if it exists
+if [ -f "$WORKDIR/.env" ]; then
+  # Use grep to skip comments and empty lines, and export variables
+  set -a
+  source <(grep -v '^#' "$WORKDIR/.env" | grep -v '^[[:space:]]*$')
+  set +a
+fi
+
 require_cmd() {
   if ! command -v "$1" >/dev/null 2>&1; then
     echo "Missing command: $1"
@@ -49,10 +57,13 @@ if [ "$FORCE_ENCRYPT" != "1" ] && [ -n "$before_hash" ] && [ "$before_hash" = "$
   exit 0
 fi
 
+echo "EV.json changed. Extracting images..."
+node data-v1/tools/extract-images.mjs --file EV.json
+
 echo "EV.json changed. Encrypting..."
 ORCA_ANDROID_SOURCE_KEY="$ORCA_ANDROID_SOURCE_KEY" node scripts/encrypt-data-v1-source-folder.mjs --file EV.json
 
-git add data-v1/source-encrypted/EV.enc data-v1/source-encrypted/manifest.json
+git add data-v1/source-encrypted/EV.enc data-v1/source-encrypted/manifest.json data-v1/source-images
 
 if git diff --cached --quiet; then
   echo "No encrypted output change. Skip commit."
