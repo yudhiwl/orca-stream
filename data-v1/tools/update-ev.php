@@ -256,7 +256,7 @@ if (!is_string($projectRoot) || $projectRoot === '') {
     jsonExit(500, ['ok' => false, 'error' => 'Invalid project root.']);
 }
 
-$sourceUrl = requestValue('source_url', envStr('EV_SOURCE_URL', 'https://raw.githubusercontent.com/brodatv1/lite/refs/heads/main/v215/EV.json'));
+$sourceUrl = requestValue('source_url', envStr('EV_SOURCE_URL', 'https://raw.githubusercontent.com/suaraalamraya/datv/refs/heads/main/bittv/v215/EV.json'));
 $force = boolStr(requestValue('force', envStr('EV_FORCE_UPDATE', '0')));
 $pushChanges = boolStr(requestValue('push', envStr('EV_AUTO_PUSH', '1')));
 $commitMsg = requestValue('commit_msg', envStr('EV_COMMIT_MSG', 'chore(data-v1): auto-update EV from upstream'));

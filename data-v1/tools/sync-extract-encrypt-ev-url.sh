@@ -2,7 +2,7 @@
 set -euo pipefail
 
 WORKDIR="${WORKDIR:-$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)}"
-SOURCE_URL="${SOURCE_URL:-https://raw.githubusercontent.com/brodatv1/lite/refs/heads/main/v215/EV.json}"
+SOURCE_URL="${SOURCE_URL:-https://raw.githubusercontent.com/suaraalamraya/datv/refs/heads/main/bittv/v215/EV.json}"
 TARGET_FILE="${TARGET_FILE:-data-v1/source/EV.json}"
 GIT_REMOTE="${GIT_REMOTE:-origin}"
 GIT_BRANCH="${GIT_BRANCH:-}"

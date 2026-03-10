@@ -2,7 +2,7 @@
 set -euo pipefail
 
 WORKDIR="${WORKDIR:-$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)}"
-LITE_VERSION="${LITE_VERSION:-v215}"
+LITE_VERSION="${LITE_VERSION:-bittv/v215}"
 GIT_REMOTE="${GIT_REMOTE:-origin}"
 GIT_BRANCH="${GIT_BRANCH:-main}"
 COMMIT_MSG="${COMMIT_MSG:-chore(data-v1): auto-encrypt EV source}"
