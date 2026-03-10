@@ -41,14 +41,19 @@ git pull origin "$GIT_BRANCH"
 echo "-> Syncing EV.json..."
 node scripts/sync-lite-data.mjs --file EV.json
 
-# 5. Encrypt EV.json and ID.json
+# 5. Extract and fix Image URLs
+echo "-> Extracting and fixing Image URLs..."
+node data-v1/tools/extract-images.mjs --file EV.json
+
+# 6. Encrypt EV.json and ID.json
 echo "-> Encrypting EV.json and ID.json..."
 node scripts/encrypt-data-v1-source-folder.mjs --files EV.json,ID.json
 
-# 6. Check for changes and commit
+# 7. Check for changes and commit
 echo "-> Checking for changes..."
 git add data-v1/source/EV.json data-v1/source/ID.json 2>/dev/null || true
 git add data-v1/source-encrypted/ 2>/dev/null || true
+git add data-v1/source-images/ 2>/dev/null || true
 
 if git diff --cached --quiet; then
   echo "-> No changes detected. Nothing to commit."
