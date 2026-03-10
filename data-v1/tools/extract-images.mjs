@@ -297,6 +297,7 @@ function main() {
       if (!item || typeof item !== "object") continue;
       const currentImage = String(item.image ?? "").trim();
 
+      // 1. Rewrite GitHub placeholders if they match
       const placeholderRewritten = rewritePlaceholderImageUrl(
         currentImage,
         resolvedImageBaseUrl
@@ -307,25 +308,43 @@ function main() {
         fileChanged = true;
       }
 
+      // 2. Extract Data URIs
       const parsed = parseDataUri(item.image);
-      if (!parsed) continue;
+      if (parsed) {
+        const hash = sha256Hex(parsed.buffer);
+        const ext = extensionFromMime(parsed.mime);
+        const outputName = `${hash}.${ext}`;
+        const outputPath = path.join(options.imageDir, outputName);
+        if (fs.existsSync(outputPath)) {
+          deduped += 1;
+        } else {
+          fs.writeFileSync(outputPath, parsed.buffer);
+          converted += 1;
+        }
 
-      const hash = sha256Hex(parsed.buffer);
-      const ext = extensionFromMime(parsed.mime);
-      const outputName = `${hash}.${ext}`;
-      const outputPath = path.join(options.imageDir, outputName);
-      if (fs.existsSync(outputPath)) {
-        deduped += 1;
-      } else {
-        fs.writeFileSync(outputPath, parsed.buffer);
-        converted += 1;
+        const nextImage = joinUrl(resolvedImageBaseUrl, outputName, options.imageDir);
+        if (item.image !== nextImage) {
+          item.image = nextImage;
+          updated += 1;
+          fileChanged = true;
+        }
+        continue;
       }
 
-      const nextImage = joinUrl(resolvedImageBaseUrl, outputName, options.imageDir);
-      if (item.image !== nextImage) {
-        item.image = nextImage;
-        updated += 1;
-        fileChanged = true;
+      // 3. If it's already a filename (no protocol, no slash, no data uri)
+      // but we have a base URL, make it absolute.
+      if (item.image &&
+        !item.image.includes("://") &&
+        !item.image.startsWith("/") &&
+        !item.image.startsWith("data:") &&
+        resolvedImageBaseUrl) {
+
+        const absoluteUrl = joinUrl(resolvedImageBaseUrl, item.image, options.imageDir);
+        if (item.image !== absoluteUrl) {
+          item.image = absoluteUrl;
+          updated += 1;
+          fileChanged = true;
+        }
       }
     }
 
