@@ -25,6 +25,28 @@
       "category": "Events"
     },
     {
+      "id": "1473",
+      "name": "Korean V-League Women [CH1]",
+      "tagline": "17 Mar 17:00 WIB - HI Pass Expressway vs IBK Altos",
+      "hls": "https://livecloud.akamaized.net/sports/lip2_kr2/anmssgpu0002/mpiyh1il34pn9f9tl7zbkbawqblr0hphcd4q/playlist.m3u8?hdnts=st=1773741363~exp=1773773773~acl=*/mpiyh1il34pn9f9tl7zbkbawqblr0hphcd4q/*~hmac=d8b816b7c6038a00eaa5b4972138b0f7ec8d55a1c92889c4a8008179a4e9df9f",
+      "namespace": "KOVO Cup 2025 [CH1]",
+      "is_live": "t",
+      "is_movie": "f",
+      "subtitle": "",
+      "image": "https://api.orcatv.my.id/orca-stream/data-v1/source-images/91f8127fdb3451f38451e1a9acaec2fac0797d8502b923490ddc0dc4b5944aa5.png",
+      "jenis": "hls",
+      "premium": "f",
+      "alpha_2_code": "EV",
+      "country_name": "Events",
+      "t_stamp": "1773741600",
+      "s_stamp": "1773749700",
+      "url_license": "39c4dc6704cf4ceea2fd4863b88d8a7d:4e9d7954c2ff46759289da4fc9f018ea",
+      "fake_event": "f",
+      "header_iptv": "{\"Referer\":\"none\",\"Origin\":\"none\",\"User-Agent\":\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36\"}",
+      "header_license": "{\"widevine\":\"https://mrpw.ptmnc01.verspective.net/?deviceId=NDIzMDJhZmUtYWRjMi0zNGJkLTkyN2EtYmE1ZDFlZWIwODEz\",\"User-Agent\":\"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6 RTSP-Dogkiller)\"}",
+      "category": "Events"
+    },
+    {
       "id": "1058",
       "name": "UEFA Champions League [CH1]",
       "tagline": "18 Mar 00:45 WIB - Sporting CP vs Bodo Glimt",
