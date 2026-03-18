@@ -3,28 +3,6 @@
   "country": "EV",
   "info": [
     {
-      "id": "2741",
-      "name": "Concacaf Champions Cup [CH1]",
-      "tagline": "18 Mar 08:00 WIB - LD Alajuelense vs Los Angeles FC",
-      "hls": "https://qw.live.pv-cdn.net/OTTB/pdx-nitro/live/clients/dash/enc/tmpzbbdj9y/out/v1/962736723a534ba294e7592fef49827b/cenc.mpd",
-      "namespace": "Concacaf Champions Cup [CH1]",
-      "is_live": "t",
-      "is_movie": "f",
-      "subtitle": "",
-      "image": "https://api.orcatv.my.id/orca-stream/data-v1/source-images/e8b991db966d6b6d221f4f893e756df3307261b52493622a46e6de08187c9485.png",
-      "jenis": "dash-clearkey",
-      "premium": "f",
-      "alpha_2_code": "EV",
-      "country_name": "Events",
-      "t_stamp": "1773795608",
-      "s_stamp": "1773803100",
-      "url_license": "eyJrZXlzIjpbeyJrdHkiOiJvY3QiLCJrIjoidmRlYmN0amtqdFNEcW1JOHc0cUtGZyIsImtpZCI6IlZHYnIxd2NFdmV0bGZ3cS9QRnlrN3cifV0sInR5cGUiOiJ0ZW1wb3JhcnkifQ==",
-      "fake_event": "f",
-      "header_iptv": "{\"Referer\":\"https://cricrex.live/\",\"Origin\":\"https://cricrex.live\",\"User-Agent\":\"Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:142.0) Gecko/20100101 Firefox/142.0\",\"Accept\":\"*/*\"}",
-      "header_license": "{\"x-data\":\"none\"}",
-      "category": "Events"
-    },
-    {
       "id": "3847",
       "name": "Concacaf Champions Cup [CH2]",
       "tagline": "18 Mar 10:00 WIB - Cruz Azul vs Monterrey",
