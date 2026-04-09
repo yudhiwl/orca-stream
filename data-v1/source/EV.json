@@ -3,28 +3,6 @@
   "country": "EV",
   "info": [
     {
-      "id": "1408",
-      "name": "UEFA Europa Conference League [CH1]",
-      "tagline": "09 Apr 23:45 WIB - Rayo Vallecano vs AEK Athens",
-      "hls": "https://abkv2pxaaaaaaaamms3xu2tu2eynb.ta.bia-cf.live.pv-cdn.net/iad-nitro/live/clients/dash/enc/pnu10tp36z/out/v1/912e9db56d75403b8a9ac0a719110f36/cenc.mpd",
-      "namespace": "UEFA Europa Conference League [CH1]",
-      "is_live": "t",
-      "is_movie": "f",
-      "subtitle": "https://qw.live.pv-cdn.net/OTTB/iad-nitro/live/clients/dash/enc/pnu10tp36z/out/v1/912e9db56d75403b8a9ac0a719110f36/cenc.mpd",
-      "image": "https://api.orcatv.my.id/orca-stream/data-v1/source-images/9845064fbffd6da18d096647d0c2993f46d89c55813be345ab68977d398409cb.png",
-      "jenis": "dash-clearkey",
-      "premium": "f",
-      "alpha_2_code": "EV",
-      "country_name": "Events",
-      "t_stamp": "1775753108",
-      "s_stamp": "1775760600",
-      "url_license": "eyJrZXlzIjpbeyJrdHkiOiJvY3QiLCJrIjoiWTA0UTcrU3J1eFMrUUFvOHk2d0NXQSIsImtpZCI6IkdTc1JGZG9FRllYSGNnQVNoVW52b1EifV0sInR5cGUiOiJ0ZW1wb3JhcnkifQ==",
-      "fake_event": "f",
-      "header_iptv": "{\"Referer\":\"none\",\"Origin\":\"none\",\"User-Agent\":\"Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:120.0) Gecko/20100101 Firefox/120.0\"}",
-      "header_license": "{\"x-data\":\"none\"}",
-      "category": "Events"
-    },
-    {
       "id": "3322",
       "name": "UEFA Europa Conference League [CH2]",
       "tagline": "10 Apr 02:00 WIB - 1. FSV Mainz 05 vs RC Strasbourg Alsace",
