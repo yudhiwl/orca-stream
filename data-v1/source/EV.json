@@ -3,28 +3,6 @@
   "country": "EV",
   "info": [
     {
-      "id": "813",
-      "name": "Indonesia: BRI Super League [CH1]",
-      "tagline": "12 Apr 15:30 WIB - Persis Solo FC vs Semen Padang",
-      "hls": "http://140.150.22.205/live/channel8.flv?wsSecret=ce4fe514454a92adc84d8a15590d0dfc&wsABSTime=1775910165",
-      "namespace": "Indonesia: BRI Super League[CH1]",
-      "is_live": "t",
-      "is_movie": "f",
-      "subtitle": "",
-      "image": "https://api.orcatv.my.id/orca-stream/data-v1/source-images/a2588b00b3fe83860cdfe3b7b47bd6926cc08b6448be3ed25f0f18602fc9a7a0.png",
-      "jenis": "ts",
-      "premium": "f",
-      "alpha_2_code": "EV",
-      "country_name": "Events",
-      "t_stamp": "1775982608",
-      "s_stamp": "1775990100",
-      "url_license": "https://etslive-v3-vidio-com-preview-tokenized.akamaized.net/live/17852/master.m3u8?hdnts=exp=1726126994~acl=/live/17852/master.m3u8!/hls-p/ingest_17852*/*!/hls-b/ingest_17852*/*~id=851110~hmac=7d99eba92a995ff011bebd28413b2ce3115295b25a6ae91d4de3686d5bc3b954",
-      "fake_event": "f",
-      "header_iptv": "{\"Host\":\"live1.pro2cdnlive.com\",\"Referer\":\"https://xl365.plcdn.xyz/\",\"Origin\":\"https://xl365.plcdn.xyz\",\"User-Agent\":\"Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:134.0) Gecko/20100101 Firefox/134.0\"}",
-      "header_license": "{\"x-data\":\"none\"}",
-      "category": "Events"
-    },
-    {
       "id": "3957",
       "name": "ASEAN Futsal Championship [CH1]",
       "tagline": "12 Apr 17:00 WIB - Australia vs Vietnam",
