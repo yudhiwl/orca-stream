@@ -3,28 +3,6 @@
   "country": "EV",
   "info": [
     {
-      "id": "3880",
-      "name": "Formula 1 [CH1]",
-      "tagline": "22 Mei 23:30 WIB - Practice 1",
-      "hls": "http://abkv2pxaaaaaaaamms3xu2tu2eynb.ta.bia-cf.live.pv-cdn.net/sin-nitro/live/clients/dash/enc/fdb3pubmek/out/v1/aefca6420f944a9482e117f315de535f/cenc.mpd",
-      "namespace": "Formula 1 [CH1]",
-      "is_live": "t",
-      "is_movie": "f",
-      "subtitle": "https://qw.live.pv-cdn.net/OTTB/sin-nitro/live/clients/dash/enc/fdb3pubmek/out/v1/aefca6420f944a9482e117f315de535f/cenc.mpd",
-      "image": "https://api.orcatv.my.id/orca-stream/data-v1/source-images/a6b2bd9ca68016575515cce7d801975cc0d57c75072bad9d63fe65c6166395bb.png",
-      "jenis": "dash-clearkey",
-      "premium": "f",
-      "alpha_2_code": "EV",
-      "country_name": "Events",
-      "t_stamp": "1779467400",
-      "s_stamp": "1779471000",
-      "url_license": "eyJrZXlzIjpbeyJrdHkiOiJvY3QiLCJrIjoiRzRvWFdZRXBvMkdGTmNqN0JmRUQvZyIsImtpZCI6ImZwSTV3Wmd0bUVvQUxmUHRCSjBIVmcifV0sInR5cGUiOiJ0ZW1wb3JhcnkifQ==",
-      "fake_event": "f",
-      "header_iptv": "{\"Referer\":\"none\",\"Origin\":\"none\",\"User-Agent\":\"Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:123.0) Gecko/20100101 Firefox/123.0\"}",
-      "header_license": "{\"x-data\":\"none\"}",
-      "category": "Events"
-    },
-    {
       "id": "916",
       "name": "Italy: Serie-A [CH1]",
       "tagline": "23 Mei 01:45 WIB - Fiorentina vs Atalanta",
