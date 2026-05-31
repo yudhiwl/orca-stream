@@ -25,28 +25,6 @@
       "category": "Events"
     },
     {
-      "id": "3089",
-      "name": "MotoGP [CH1]",
-      "tagline": "31 Mei 14:40 WIB - Warm Up & Rider Parade",
-      "hls": "https://abkv2pxaaaaaaaamms3xu2tu2eynb.ta.bia-cf.live.pv-cdn.net/iad-nitro/live/clients/dash/enc/fb6jy4pxts/out/v1/f8fa17f087564f51aa4d5c700be43ec4/cenc.mpd",
-      "namespace": "MotoGP [CH1]",
-      "is_live": "t",
-      "is_movie": "f",
-      "subtitle": "https://qw.live.pv-cdn.net/OTTB/iad-nitro/live/clients/dash/enc/fb6jy4pxts/out/v1/f8fa17f087564f51aa4d5c700be43ec4/cenc.mpd",
-      "image": "https://api.orcatv.my.id/orca-stream/data-v1/source-images/ad705498956fecac68590a3cf0694a94b9f03b213f3d70d0bece3dcfad40b814.png",
-      "jenis": "dash-clearkey",
-      "premium": "f",
-      "alpha_2_code": "EV",
-      "country_name": "Events",
-      "t_stamp": "1780213200",
-      "s_stamp": "1780216800",
-      "url_license": "eyJrZXlzIjpbeyJrdHkiOiJvY3QiLCJrIjoibnhqU1lwSFpJd2d6VUI5L2dpOW9kUSIsImtpZCI6IjhvZzRES1RPK2EwL0o2a3FDT203aXcifV0sInR5cGUiOiJ0ZW1wb3JhcnkifQ==",
-      "fake_event": "f",
-      "header_iptv": "{\"Referer\":\"none\",\"Origin\":\"none\",\"User-Agent\":\"Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:120.0) Gecko/20100101 Firefox/120.0\"}",
-      "header_license": "{\"x-data\":\"none\"}",
-      "category": "Events"
-    },
-    {
       "id": "3618",
       "name": "MotoGP [CH2]",
       "tagline": "31 Mei 16:00 WIB - Race",
