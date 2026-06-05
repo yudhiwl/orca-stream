@@ -4,14 +4,14 @@
   "kdf": {
     "name": "pbkdf2-sha256",
     "iterations": 210000,
-    "saltB64": "lao8zOR6zqgJnuJOvqDHKA=="
+    "saltB64": "eQTVfwEpt1t7N/VOGtrzeg=="
   },
-  "ivB64": "LvJwSsn2LxuCFg88",
+  "ivB64": "Babo5geirJh1rLni",
   "tagLength": 16,
-  "payloadSha256": "2b201ccf840268963c1929cebc598d91cdec4a3455043d6af944efbdc1da567b",
-  "inputSha256": "32f19a97e1da042923165d22a5c0558d9c730f53005c40b58aae02dfd943e339",
-  "generatedAt": "2026-06-05T12:15:32.060Z",
+  "payloadSha256": "92eaf73fff5599d627ffd9208194fd30ea96ef8e64cfc9948063c4266f4053fe",
+  "inputSha256": "77efc7acebf8deffd62b92900c0679b6f1610d17b64d8d71bdcefb7dd474607c",
+  "generatedAt": "2026-06-05T12:30:20.786Z",
   "inputFile": "data-v1\\sources.json",
   "outputFile": "data-v1\\sources.enc",
-  "outputBytes": 11500337
+  "outputBytes": 775849
 }
