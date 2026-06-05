@@ -3,28 +3,6 @@
   "country": "EV",
   "info": [
     {
-      "id": "4095",
-      "name": "International Friendly [CH5]",
-      "tagline": "05 Jun 23:00 WIB - Georgia vs Bahrain",
-      "hls": "https://yallavoide.yalla-shoot-zhubo.com/sport/202_5390190_2.m3u8?auth_key=1780761747-0-0-6385cae4573ae37c3e2ec3544e8315f9",
-      "namespace": "International Friendly ch5",
-      "is_live": "t",
-      "is_movie": "f",
-      "subtitle": "",
-      "image": "https://api.orcatv.my.id/orca-stream/data-v1/source-images/83d569e5afa7f13ba68f11380657048c94c22e4cc477f4d21cee1654056702ca.png",
-      "jenis": "hls",
-      "premium": "f",
-      "alpha_2_code": "EV",
-      "country_name": "Events",
-      "t_stamp": "1780675208",
-      "s_stamp": "1780682700",
-      "url_license": "https://lebo.huminbird.cn/live/ballbar_29030.m3u8",
-      "fake_event": "f",
-      "header_iptv": "{\"Referer\":\"none\",\"Origin\":\"none\",\"User-Agent\":\"Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:131.0) Gecko/20100101 Firefox/131.0\"}",
-      "header_license": "{\"x-data\":\"none\"}",
-      "category": "Events"
-    },
-    {
       "id": "4120",
       "name": "Toulon Maurice Revello [CH2]",
       "tagline": "05 Jun 23:30 WIB - Saudi Arabia U21 vs Tunisia U23",
