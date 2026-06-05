@@ -574,6 +574,30 @@
       "header_license": "{\"x-data\":\"none\"}",
       "category": "General"
     },
+
+{
+      "id": "1052",
+      "name": "Indosiar",
+      "tagline": "Memang Untuk Anda",
+      "hls": "https://d2tjypxxy769fn.cloudfront.net/out/v1/e930be336fed49e6b26a7554e113f7a4/index.mpd",
+      "namespace": "Indosiar",
+      "is_live": "f",
+      "is_movie": "f",
+      "subtitle": "",
+      "image": "https://raw.githubusercontent.com/yudhiwl/orca-stream/main/data-v1/source-images/ba92ddeda06fd30c6a8c15bb87cd6094b75556364e658c1b6e945bf6243a22ab.png",
+      "jenis": "dash-clearkey",
+      "premium": "f",
+      "alpha_2_code": "ID",
+      "country_name": "Indonesia",
+      "t_stamp": "none",
+      "s_stamp": "none",
+      "url_license": "eyJrZXlzIjpbeyJrdHkiOiJvY3QiLCJrIjoieC9VcDNzeS9ad25qNWx4aHlORTBUdyIsImtpZCI6InF4L3BuazVQVEw2Vmt3c3hWTUg3R1EifV0sInR5cGUiOiJ0ZW1wb3JhcnkifQ==",
+      "fake_event": "f",
+      "header_iptv": "{\"Referer\":\"https://www.visionplustv.id/\",\"Origin\":\"https://www.visionplustv.id\",\"User-Agent\":\"Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:138.0) Gecko/20100101 Firefox/138.0\"}",
+      "header_license": "{\"x-data\":\"none\"}",
+      "category": "General"
+    },
+    
     {
       "id": "1053",
       "name": "Indosiar Digital TV",
