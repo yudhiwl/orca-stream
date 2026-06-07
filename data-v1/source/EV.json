@@ -267,6 +267,28 @@
       "category": "Events"
     },
     {
+      "id": "4172",
+      "name": "UEFA European U17 Championship [CH1]",
+      "tagline": "08 Jun 00:00 WIB - Belgium U17 vs Italy U17",
+      "hls": "https://a151aivottlinear-a.akamaihd.net/OTTB/fra-nitro/live/clients/dash/enc/ssdefyhkkr/out/v1/cf01290cb7f64525bdf861580a016ca8/cenc.mpd",
+      "namespace": "UEFA European U17 Championship [CH1]",
+      "is_live": "t",
+      "is_movie": "f",
+      "subtitle": "",
+      "image": "https://api.orcatv.my.id/orca-stream/data-v1/source-images/02aa5d9ff5294e9fc6dbe6def38ff0e0971a4a5ad85308c5acab3b14e0fac194.png",
+      "jenis": "dash-clearkey",
+      "premium": "t",
+      "alpha_2_code": "EV",
+      "country_name": "Events",
+      "t_stamp": "1780851608",
+      "s_stamp": "1780859100",
+      "url_license": "eyJrZXlzIjpbeyJrdHkiOiJvY3QiLCJrIjoiS0Y4U25GN0tBZDBJcGRXaFN0Z0J5QSIsImtpZCI6IkN0UUlETi80eGdzU003SWdoL0N6UUEifV0sInR5cGUiOiJ0ZW1wb3JhcnkifQ==",
+      "fake_event": "f",
+      "header_iptv": "{\"Referer\":\"https://dce-ac-live.cdn.indazn.com/\",\"Origin\":\"https://dce-ac-live.cdn.indazn.com\",\"User-Agent\":\"Roku/DVP-12.0\"}",
+      "header_license": "{\"x-data\":\"none\"}",
+      "category": "Events"
+    },
+    {
       "id": "4188",
       "name": "Volleyball: VNL Women [CH10]",
       "tagline": "08 Jun 00:30 WIB - Brazil vs Italy",
